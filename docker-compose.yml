@@ -1,9 +1,14 @@
 version: '3'
 services:
-    puppetmaster:
-        build: 
-            context: ./puppetmaster
-            dockerfile: Dockerfile
-        expose:
-            - "8140"
-          
+    puppet:
+        image: puppet/puppetserver-standalone
+        expose: 
+            -   8140
+        hostname: puppet
+        volume:
+            -   ./code:/etc/puppetlabs/code/
+    puppetnode:
+        image: puppet/puppet-agent
+        link:
+            -   puppet:puppet
+       
