@@ -1,3 +1,0 @@
-FROM centos
-COPY ./docker-entrypoint.sh
-CMD ["puppetmaster"]
