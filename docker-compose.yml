@@ -1,14 +1,17 @@
 version: '3'
+
 services:
+
     puppet:
         image: puppet/puppetserver-standalone
         expose: 
-            -   8140
+            - 8140
         hostname: puppet
-        volume:
-            -   ./code:/etc/puppetlabs/code/
+        volumes: 
+            - ./code:/etc/puppetlabs/code/
+        
     puppetnode:
         image: puppet/puppet-agent
-        link:
-            -   puppet:puppet
+        links: 
+            - puppet:puppet
        
